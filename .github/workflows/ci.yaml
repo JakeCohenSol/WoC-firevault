@@ -1,0 +1,83 @@
+name: CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Print working directory
+        run: pwd
+
+      - name: List root directory contents
+        run: ls -al ${{ github.workspace }}
+
+      - name: List project directory contents
+        run: ls -al ${{ github.workspace }}/src/azure-sa
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ${{ github.workspace }}/src/azure-sa
+
+      - name: Run linter
+        run: npm run lint
+        working-directory: ${{ github.workspace }}/src/azure-sa
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ${{ github.workspace }}/src/azure-sa
+
+      - name: Run tests
+        run: npm test
+        working-directory: ${{ github.workspace }}/src/azure-sa
+
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ${{ github.workspace }}/src/azure-sa
+
+      - name: Run SonarQube analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          sonar-scanner \
+          -Dsonar.projectKey=jakecohensol \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        working-directory: ${{ github.workspace }}/src/azure-sa
