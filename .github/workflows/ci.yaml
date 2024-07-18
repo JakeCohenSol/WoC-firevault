@@ -15,9 +15,11 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
+        working-directory: ./src/azure-blob
         run: npm install
 
       - name: Run linter
+        working-directory: ./src/azure-blob
         run: npm run lint
 
   test:
@@ -32,9 +34,11 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
+        working-directory: ./src/azure-blob
         run: npm install
 
       - name: Run tests
+        working-directory: ./src/azure-blob
         run: npm test
 
   sonarqube:
@@ -49,14 +53,16 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
+        working-directory: ./src/azure-blob
         run: npm install
 
       - name: Run SonarQube analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        working-directory: ./src/azure-blob
         run: |
           sonar-scanner \
-          -Dsonar.projectKey=jakecohensol \
+          -Dsonar.projectKey=your_actual_project_key \
           -Dsonar.sources=. \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
