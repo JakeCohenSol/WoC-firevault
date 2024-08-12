@@ -16,11 +16,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ${{ github.workspace }}/src/azure-blob
+        working-directory: ${{ github.workspace }}/src/azure-sa
 
       - name: Run linter
         run: npm run lint
-        working-directory: ${{ github.workspace }}/src/azure-blob
+        working-directory: ${{ github.workspace }}/src/azure-sa
 
   test:
     runs-on: ubuntu-latest
@@ -35,11 +35,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ${{ github.workspace }}/src/azure-blob
+        working-directory: ${{ github.workspace }}/src/azure-sa
 
       - name: Run tests
         run: npm test
-        working-directory: ${{ github.workspace }}/src/azure-blob
+        working-directory: ${{ github.workspace }}/src/azure-sa
 
   sonarqube:
     runs-on: ubuntu-latest
@@ -60,7 +60,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ${{ github.workspace }}/src/azure-blob
+        working-directory: ${{ github.workspace }}/src/azure-sa
 
       - name: Run SonarQube analysis
         env:
@@ -71,4 +71,4 @@ jobs:
           -Dsonar.sources=. \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        working-directory: ${{ github.workspace }}/src/azure-blob
+        working-directory: ${{ github.workspace }}/src/azure-sa
