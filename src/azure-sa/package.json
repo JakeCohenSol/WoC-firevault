@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node index.js",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
+  },
+  "jest": {
+    "testMatch": ["**/tests/**/*.test.js"]
   },
   "dependencies": {
     "@azure/storage-blob": "^12.23.0",

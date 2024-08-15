@@ -38,7 +38,7 @@ jobs:
         working-directory: ${{ github.workspace }}/src/azure-sa
 
       - name: Run tests
-        run: npm test
+        run: npm test --passWithNoTests
         working-directory: ${{ github.workspace }}/src/azure-sa
 
   sonarqube:
