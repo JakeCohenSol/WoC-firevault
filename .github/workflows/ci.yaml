@@ -71,6 +71,6 @@ jobs:
           -Dsonar.projectKey=jakecohensol \
           -Dsonar.sources=. \
           -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-          -Dsonar.organization=jakecohensol
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+          -Dsonar.organization=jakecohensol  # Corrected placement of sonar.organization
         working-directory: ${{ github.workspace }}/src/azure-sa
