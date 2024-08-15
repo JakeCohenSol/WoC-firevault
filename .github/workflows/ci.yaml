@@ -72,4 +72,5 @@ jobs:
           -Dsonar.sources=. \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.organization=jakecohensol
         working-directory: ${{ github.workspace }}/src/azure-sa
