@@ -60,9 +60,9 @@ jobs:
 
       - name: Install Sonar Scanner
         run: |
-          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-9.9.6-linux.zip
+          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.1-linux.zip
           unzip sonar-scanner.zip -d $HOME
-          echo "$HOME/sonar-scanner-9.9.6-linux/bin" >> $GITHUB_PATH
+          echo "$HOME/sonar-scanner-6.1-linux/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: npm install
