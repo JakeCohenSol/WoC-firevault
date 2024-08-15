@@ -3,6 +3,7 @@
 
 # Environment variables
 **/.env
+.idea/
 
 # Logs
 logs/
