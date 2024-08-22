@@ -12,7 +12,6 @@ module.exports = [
       rules: {
         'semi': ['error', 'always'],
         'quotes': ['error', 'single'],
-        // Add more rules here as needed
       },
     },
   ];
