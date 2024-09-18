@@ -63,7 +63,7 @@ jobs:
         run: |
           sonar-scanner \
           -Dsonar.projectKey=JakeCohenSol_filevault \
-          -Dsonar.sources=. \
+          -Dsonar.sources=${{ github.workspace }}/src/azure-sa \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
           -Dsonar.organization=jakecohensol
